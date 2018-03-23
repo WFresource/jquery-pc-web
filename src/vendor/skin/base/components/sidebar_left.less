@@ -1,0 +1,239 @@
+/* ==============================================
+   LEFT SIDEBAR
+    A. 主菜单容器
+    B. 主菜单 Minified 状态
+    C. 菜单 主题层
+    D. Sidebar "Nano Scroller" Settings (Core Plugin)
+
+
+/*====================================================
+  A. 主菜单容器
+====================================================== */
+#sidebar_left {
+    color: #fff;
+    font-size: 13px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @sidebar-open-width;
+    min-height: 100%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.sidebar-left-content { height: 100%; }
+
+.sidebar-menu { padding: 10px 0 20px; }
+
+/* 设置菜单项 全覆盖 */
+.sidebar-menu li {
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 设置菜单项 a 全覆盖 */
+.sidebar-menu li a {
+    padding-left:16px;
+    padding-right:16px;
+    line-height: @sidebar-item-spacing;
+    height: @sidebar-item-spacing;
+    overflow: hidden;
+    color: #d7d7d7;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.sidebar-menu li a span{
+  font-size: inherit;
+  line-height: inherit;
+}
+.sidebar-menu li a .arrow{
+    font-size: inherit;
+    line-height: inherit;
+    position: absolute;
+    right: 18px;
+    top:0;
+    transition: all 0.2s;
+}
+.sidebar-menu li a .menu-icon{
+    margin-right: 5px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu li >a:hover{
+    border-left:3px solid #69baed;
+    color: @white;
+}
+
+/* 第二层 向下 */
+.sidebar-menu .sub-nav{
+    clear: both;
+    display: none;
+    width: @sidebar-open-width;
+    height: auto;
+    box-sizing: border-box;
+    padding:6px 0;
+}
+.sidebar-menu .sub-nav li a{
+  line-height:34px;
+  height:34px;
+  font-size: 14px;
+}
+//向下三层
+.sidebar-menu .sub-nav li a{
+  padding-left: 26px;
+}
+.sidebar-menu .sub-nav .sub-nav li a{
+  padding-left: 36px;
+}
+.sidebar-menu .sub-nav .sub-nav .sub-nav li a{
+  padding-left: 46px;
+}
+
+.sidebar-menu .sidebar-label {
+    text-transform: uppercase;
+    color: #70829a;
+    font-weight: 600;
+    padding-left: 18px;
+    padding-bottom: 3px;
+    font-size: 12px;
+}
+
+
+/*下拉*/
+.sidebar-menu li a.menu-open + ul {
+    display: block;
+}
+.sidebar-menu li a.menu-open .arrow{
+    transform: rotate(180deg);
+}
+
+.sidebar-menu li a.active{
+    background: #0f8fed;
+}
+
+
+
+/*====================================================
+  B. 主菜单 Minified 状态
+====================================================== */
+/* 包裹层 局部全局 */
+body.sb-l-m #sidebar_left {
+    z-index: 1028;
+    overflow: visible;
+    width: @sidebar-minified-width;
+    height: 100%;
+    left: 0;
+}
+
+/* Minified 下隐藏元素 */
+body.sb-l-m #sidebar_left .sidebar-menu > li > a .sidebar-title,
+body.sb-l-m #sidebar_left .sidebar-label,
+body.sb-l-m #sidebar_left .sidebar-menu > li > a >.arrow{
+    display: none;
+}
+body.sb-l-m .sidebar-menu>li>a .menu-icon{
+    margin-right:0;
+    font-size: 18px;
+}
+body.sb-l-m .sidebar-menu .sub-nav li a{
+  padding-left: 16px;
+}
+body.sb-l-m .sidebar-menu .sub-nav .sub-nav li a{
+  padding-left: 26px;
+}
+body.sb-l-m .sidebar-menu .sub-nav .sub-nav .sub-nav li a{
+  padding-left: 36px;
+}
+
+
+/* 第一层状态 */
+body.sb-l-m .sidebar-menu > li > a {
+    padding: 0 22px;
+    font-size: 16px;
+}
+
+body.sb-l-m .sidebar-menu > li > a.menu-open + ul {
+    display: none;
+}
+
+/*向下无限层*/
+body.sb-l-m .sidebar-menu > li >ul {
+    position: absolute;
+    left: @sidebar-minified-width;
+    top: 0;
+    width: 180px;
+    height: auto;
+    border-left: 1px solid #222;
+    padding-bottom: 7px;
+    overflow: hidden;
+}
+/*body.sb-l-m .sidebar-menu > li >ul ul{
+
+  width: 180px;
+  height: auto;
+  overflow: hidden;
+}*/
+body.sb-l-m .sidebar-menu > li:hover > ul{
+    display:block!important;
+}
+
+
+/*框架其他元素*/
+
+body.sb-l-m #content_wrapper { margin-left: @sidebar-minified-width; }
+body.sb-l-m .navbar-branding { width: @sidebar-minified-width; }
+body.sb-l-m .navbar-brand { display: none; }
+
+
+/*=======================================================
+  C. 菜单 主题层
+========================================================= */
+
+/* Sidebar Container */
+/*
+#sidebar_left {
+    background-color: @sb-bg-color;
+}
+#sidebar_left .sidebar-menu > li > ul{
+    background-color: darken(@sb-bg-color,5%);
+}
+*/
+
+
+
+/*==================================================
+  Sidebar "Nano Scroller" Settings (Core Plugin)
+==================================================== */
+#sidebar_left.nano > .nano-content {}
+#sidebar_left.nano.affix{
+    padding-bottom: 0;
+}
+#sidebar_left.affix.nano .tooltip {
+    z-index: 9999 !important;
+}
+/* If the sidebar is minified we disable nanoscroll via css
+ * otherwise nano scroll hides popout menus and the scroll is
+ * needed to see submenus with many items */
+body.sb-l-m #sidebar_left.nano {
+    position: absolute;
+}
+body.sb-l-m #sidebar_left.nano > .nano-content {
+    overflow: visible;
+    right: 0 !important;
+}
+/* If the sidebar is minified and in mobile mode we hard disable
+ * the entire plugin via a display !important */
+body.sb-l-m .nano > .nano-pane {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<section id="qq">
+    <div class="breadcrumb-wrap">
+        <ol class="breadcrumb">
+            <li><a href="#/index">首页</a></li>
+            <li><a href="#/dynamic">路由切换</a></li>
+            <li class="active">路由相关API</li>
+        </ol>
+    </div>
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        页面切换时，可以应用<strong>$.setKey(key,value),$.getKey(key,value),$.setObject(key,object),$.getObject(key,object)</strong>传参，实现页面通信。
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-heading">页面切换API</div>
+        <div class="panel-body">
+            $.pathChange(path); <br><br>
+            $.setKey(key,value);<br><br>
+            $.getKey(key,value);<br><br>
+            $.setObject(key,object);<br><br>
+            $.getObject(key,object);
+        </div>
+    </div>
+
+    <div class="panel panel-success">
+        <div class="panel-heading">表格API</div>
+        <div class="panel-body">
+            $.tableList(tableId, url, otherParams, columns, sortFieldName, callback, sortOrder, bsTableOptions);<br><br>
+            /**<br><br>
+            * tableId: 表格元素ID, 必参<br><br>
+            * url：获取表格数据url, 必参<br><br>
+            * otherParams：其他参数, 必参，object<br><br>
+            * columns：表格列设置, 必参<br><br>
+            * sortFieldName：排序字段, 必参<br><br>
+            * callback：表格加载后回调, 选参<br><br>
+            * sortOrder：排序升降，默认升序, 选参<br><br>
+            * bsTableOptions：更改默认的bootatraptable设置（特殊要求时的保留功能）, 选参<br><br>
+            */
+        </div>
+    </div>
+</section>
